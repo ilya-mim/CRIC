@@ -1,0 +1,73 @@
+﻿{
+    "initialExtent": {
+            "spatialReference": {
+                "wkid": 102100
+            },
+            "xmin": -9549126.170705408,
+            "ymin": 4612089.574063576,
+            "xmax": -9542304.165930964,
+            "ymax": 4617851.015070564
+    },
+    "basemap": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+    "layers": [
+                    {
+                        "url": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer",
+                        "id": "census",
+                        "opacity": 0.8,
+                        "title": "Census",
+                        "layerInfos":
+                        [
+                            {
+                                "id": 0,
+                                "fields": ["STATE_FIPS", "CNTY_FIPS", "STCOFIPS", "TRACT", "BLOCK", "FIPS", "POP2000", "HOUSEHOLDS"]
+                            }
+                        ]
+                    },
+                    {
+                        "url": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/PublicSafety/PublicSafetyOperationalLayers/MapServer",
+                        "id": "publicsafety",
+                        "opacity": 1,
+                        "title": "Safety Operations",
+                        "layerInfos":
+                        [
+                            {
+                                "id": 1,
+                                "fields": ["FDNAME", "ADDRESS", "ABBR", "FDTYPE"]
+                            }
+                        ]
+                    }
+    ],
+    "options": {
+        "slider": true,
+        "sliderStyle": "large",
+        "logo": false
+    },
+    "bookmarks": [
+        {
+            "extent": {
+                "spatialReference": {
+                    "wkid": 102100
+                },
+                "xmin": -14201669,
+                "ymin": 4642975,
+                "xmax": -13021482,
+                "ymax": 5278931
+            },
+            "name": "Northern California",
+            "id": 0
+        },
+        {
+            "extent": {
+                "spatialReference": {
+                    "wkid": 102100
+                },
+                "xmin": -8669334,
+                "ymin": 4982379,
+                "xmax": -8664724,
+                "ymax": 4984864
+            },
+            "name": "Central Pennsylvania",
+            "id": 0
+        }
+    ]
+}

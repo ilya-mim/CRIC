@@ -1,0 +1,51 @@
+﻿<div ng-controller="home.map.tools.query.AttributesCtrl">
+
+    <div cric-panel-content class="loading" ng-class="isLoading && 'show' || 'hide' ">
+
+    </div>
+
+	<div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <select class="span12" ng-model="layer" ng-change="onLayerChange(layer)"
+                        title="Layer" ng-options="layer.name for layer in layers" />
+                </div>
+            </div>
+	
+            <div class="row-fluid">
+                <div class="span12">
+                    <select class="span12" ng-model="field" title="Field"
+                        ng-options="field.alias for field in layer.fields" />
+                </div>
+            </div>
+
+            <hr style="margin-top:0; margin-bottom: 10px;" />
+
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10 input-prepend input-append span12">
+                    <a class="btn btn-danger" ng-class="!hasQueryGraphics() && 'disabled'" ng-click="onClearResults()" title="Clear">
+                        <i class="icon-trash icon-white"></i>
+                    </a>
+                    <input class="text-right" type="text" ng-model="searchText"/>
+                    <a class="btn btn-inverse" ng-click="execute(searchText, layer, field, filterByExtent)" title="Search">
+                        <i class="icon-search icon-white"></i>
+                    </a>
+                </div>
+                <div class="span1"></div>
+            </div>
+
+            <div class="row-fluid">
+                <div class="span12" style="padding-left: 30px;">
+                    <label class="checkbox">
+                      <input type="checkbox" ng-model="filterByExtent" />
+                      Filter by extent
+                    </label>
+                </div>
+            </div>
+
+            <div style="height: 10px;"></div>
+
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+﻿<div ng-controller="admin.WorkOrderSettingCtrl">
+
+    <div ng-switch="isLoading">
+
+        <div class="loading" ng-switch-when="true">
+
+        </div>
+
+	    <div ng-switch-when="false">
+
+            <div class="row" style="padding: 30px 50px 0">
+                <div class="span4">
+                    <form class="form dashboard-manager">
+                        <fieldset>
+                            <legend>Work Orders Settings</legend>
+                            <div ng-repeat='(uk, uv) in wocolors'>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>{{uk}}</label>
+                                        <select class="span11" ng-model="wocolors[uk]" ng-style="{backgroundColor: wocolors[uk]}" ng-options="k as v for (k, v) in colors"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 50px 0">
+                <div class="span4">
+                    <button class="btn" ng-click="onSaveClick()">Save</button>
+                </div>
+            </div>
+
+
+	    </div>
+
+</div>

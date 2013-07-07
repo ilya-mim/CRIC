@@ -1,0 +1,134 @@
+﻿<div ng-controller="home.dashboard.ManagerCtrl">
+
+    <div ng-switch="isLoading">
+
+        <div class="loading" ng-switch-when="true">
+
+        </div>
+
+	    <div ng-switch-when="false">
+
+            <div class="row" style="padding: 30px 50px 0">
+                <div class="span6">
+                    <form class="form dashboard-manager">
+                        <fieldset>
+                            <legend>Widgets</legend>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div ng-repeat='w in widgets' style="padding-bottom: 3px;">
+                    
+                                        <div class="input-prepend span12">
+                                            <a class="btn" ng-click="removeWidget(w)"><i class="icon-remove"></i></a>
+                                            <span class="span5 uneditable-input">{{w.title}}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="span1"></div>
+                <div class="span6">
+                    <form class="form dashboard-manager">
+                        <fieldset>
+                            <legend>Add widget</legend>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Type</label>
+                                    <select class="span7" ng-model="template" ng-change="onTemplateChange(template)" 
+                                        ng-options="t.title for t in templates" title="Templates"></select>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Title</label>
+                                    <input class="span11" ng-model="widget.title" type="text" /> 
+                                </div>
+                            </div>
+                            <div ng-switch="template.directive">
+
+                                <div ng-switch-when="cric-widget-work-order">
+                                    <div class="row-fluid">
+                                        <div class="span6">
+                                            <label>End Date</label>
+                                            <div class="btn-group">
+                                                <div cric-date-range-picker data-start="widget.options.startDate" data-end="widget.options.endDate" data-format="MM/dd/yyyy"></div>
+                                            </div>
+                                        </div>
+                                        <div class="span6">
+                                            <label>Statuses</label>
+                                                <select cric-multiselect button-text="Select statuses" button-class="btn btn-small" class="multiselect" multiple="multiple"
+                                                    ng-model="widget.options.statuses" ng-options="k as v for (k, v) in statuses" title="Statuses">
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="row-fluid" style="padding-top:10px;">
+                                        <div class="span6">
+                                            <label>Areas</label>
+                                                <select cric-multiselect button-text="Select areas" button-class="btn btn-small" class="multiselect" multiple="multiple"
+                                                    ng-model="widget.options.areas" ng-options="k as v for (k, v) in areas" title="Areas">
+                                                </select>
+                                        </div>
+                                        <div class="span6">
+                                            <label>Types</label>
+                                                <select cric-multiselect button-text="Select types" button-class="btn btn-small" class="multiselect" multiple="multiple"
+                                                    ng-model="widget.options.types" ng-options="k as v for (k, v) in types" title="Types">
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div ng-switch-when="cric-widget-alerts">
+
+                                </div> 
+        
+                                <div ng-switch-when="cric-widget-calendar">
+
+                                </div> 
+
+                                <div ng-switch-when="cric-widget-emergency">
+
+                                </div> 
+
+                                <div ng-switch-when="cric-widget-map">
+
+                                </div> 
+
+                                <div ng-switch-when="cric-widget-chart">
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <label>Statistics</label>
+                                            <select class="span7" ng-model="widget.options.id" ng-init="widget.title = statistics[template.options.id]" ng-change="widget.title = statistics[widget.options.id]"
+                                                ng-options="k as v for (k, v) in statistics" title="Statistics"></select>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div ng-switch-when="cric-widget-weather">
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <label>WOEID</label>
+                                            <input class="span11" ng-model="widget.options.locations[0]" type="text" /> 
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div ng-switch-when="cric-widget-reports">
+
+                                </div> 
+
+                            </div>
+                        </fieldset>
+                    </form>
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <button class="btn" ng-click="onAddWidgetClick(widget)">Add widget</button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+	    </div>
+
+</div>

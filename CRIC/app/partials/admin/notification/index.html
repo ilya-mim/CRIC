@@ -1,0 +1,133 @@
+﻿<div ng-controller="admin.NotificationCtrl">
+
+    <div class="panel-content-container">
+            
+        <div ng-switch="isLoading">
+
+            <div cric-panel-content class="loading" ng-switch-when="true">
+
+            </div>
+
+	        <div ng-switch-when="false" class="row-fluid" style="padding: 10px 50px 0">
+                <div class="span12">
+
+                        <div class="span6">
+
+                        <fieldset>
+                        
+                            <legend style="color:white;">Notifications</legend>
+
+                            <div class="btn-toolbar" style="height: 20px;">
+                                <div class="btn-toolbar-small left" style="margin-bottom: 5px;">
+                                    
+                                    <div class="btn-group">
+                                        <button class="btn btn-small btn-danger" ng-click="onResetClick()" title="Reset filters" style="margin-right: 0;">
+                                            <i class="icon-refresh icon-white"></i>
+                                        </button>
+                                    </div>
+                                    <select cric-multiselect button-text="Select Source" button-class="btn btn-small" class="multiselect" multiple="multiple"
+                                        ng-model="selectedSources" ng-options="k as v.sourcename for (k, v) in sources" title="Sources">
+                                    </select>
+                                    <div class="btn-group" style="margin-left: 0;">
+                                        <button class="btn btn-small btn-inverse" title="Search" ng-click="onSearchClick()">
+                                            <i class="icon-search icon-white"></i>
+                                        </button>
+                                    </div>
+                                
+                                </div>
+                                <div class="btn-toolbar-small right">
+                                
+                                    <div class="btn-group" style="margin-right: 0;">
+                                        <button class="btn btn-small btn-inverse" title="Create Message" ng-click="onCreateMessageClick()">
+                                            <i class="icon-envelope icon-white"></i>
+                                        </button>
+                                    </div>
+                                
+                                </div>
+                            </div>
+
+                            <div cric-carusel id="messagesCarousel" class="carousel slide" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <div ng-class="{ active: ($first) }" class="item" ng-repeat='page in messages'>
+                                            <table class="table table-condensed table-bordered table-striped table-hover" style="background-color: white;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 10px;"><input type="checkbox" ng-model="table.isSelectAll" ng-click="onCheckAll()"/></th>
+                                                        <th style="width: 15px; text-align:center;">#</th>
+                                                        <th ng-class="isSortBy('sourcename')"><a href ng-click="sortBy('sourcename')">Source</a></th>
+                                                        <th ng-class="isSortBy('eventname')"><a href ng-click="sortBy('eventname')">Event</a></th>
+                                                        <th>Message</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat='row in page' style="cursor: pointer;" ng-class="row.messageid == selectedMessage.messageid && 'info'" ng-click="onSelectMessage(row)">
+                                                        <td style="text-align: center;"><input type="checkbox" ng-model="row['_selected']" ng-change="onCheck(row)"/></td>
+                                                        <td style="text-align: center;">{{row["_number"]}}</td>
+                                                        <td>{{row["sourcename"]}}</td>
+                                                        <td>{{row["eventname"]}}</td>
+                                                        <td class="breaked" cric-html-content ng-model="row['messagebody']"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>        
+                                        </div>
+                                </div>
+                                <a ng-hide="messages.length <= 1" class="message carousel-control left" href="#messagesCarousel" data-slide="prev" ng-click="onSlide('prev')">&lsaquo;</a>
+                                <a ng-hide="messages.length <= 1" class="message carousel-control right" href="#messagesCarousel" data-slide="next" ng-click="onSlide('next')">&rsaquo;</a>
+                            </div>
+
+                            <div ng-show="!isDataAvailable" class="table-no-data-available" style="color: white;">
+
+		                        No data available
+	
+                            </div>
+                                
+                            <div style="position: relative; top: -15px;">
+                                <div style="float: left;">
+                                    <span class="btn-mini" style="color:white;">Rows per page&nbsp;</span>
+                                    <select class="btn btn-mini" ng-init=" table.size=table.sizes[0] " 
+                                        ng-model="table.size" ng-options="size for size in table.sizes" ng-change="onPageSizeChanged()"></select>
+                                </div>
+                                <div style="float: right;">
+                                    <span class="btn-mini" style="color:white;">Page {{pageIndex}} of {{messages.length}}</span>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        </div>
+
+                        <div class="span5" style="padding-top: 46px; padding-left: 20px;">
+                            <form name="messageform" novalidate class="css-form dashboard-manager">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>Source</label>
+                                        <select class="span12" ng-disabled="selectedMessage.messageid" ng-model="selectedMessage.sourceid" ng-options="k as v.sourcename for (k, v) in sources" ng-change="onSourceChanged()" />
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>Event</label>
+                                        <select class="span12" ng-disabled="selectedMessage.messageid" ng-model="selectedMessage.eventid" ng-options="k as v for (k, v) in sources[selectedMessage.sourceid].events" />
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>Message</label>
+                                        <textarea cric-message-editor data-message="selectedMessage" id="messagebody" class="span12" rows="7" ng-model="selectedMessage.messagebody" placeholder="Notification Message"/> 
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <button class="btn span2" style="margin-left: 0;" ng-disabled="messageform.$invalid" ng-click="onSaveClick()" title="Save user">Save</button>
+                            <button class="btn btn-danger span2" ng-disabled="!selectedMessage.messageid" ng-click="onDeleteClick()" title="Delete message">Delete</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</div>

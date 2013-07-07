@@ -1,0 +1,129 @@
+﻿@helper RenderDebugScripts()
+{
+    <script src="~/app/js/app.js" type="text/javascript"></script>
+    
+    <script src="~/app/js/controllers/home/home-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/chart/chart-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/workorder/workorder-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/cityengine/cityengine-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/dashboard/dashboard-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/dashboard/grid-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/dashboard/manager-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/map-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/info-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/tools-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/tools/bookmarks-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/tools/query-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/tools/query/attributes-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/tools/query/location-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/tools/query/results-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/map/toc-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/report/report-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/designreview/designreview-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/home/designreview/workorder-controller.js" type="text/javascript"></script>
+
+    <script src="~/app/js/controllers/admin/admin-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/admin/notification/notification-controller.js " type="text/javascript"></script>
+    <script src="~/app/js/controllers/admin/smtp/smtp-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/admin/user/user-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/admin/workordersetting/workordersetting-controller.js" type="text/javascript"></script>
+
+    <script src="~/app/js/controllers/base/logoff-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/base/nav-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/base/app-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/base/about-controller.js" type="text/javascript"></script>
+    <script src="~/app/js/controllers/base/userprofile-controller.js" type="text/javascript"></script>
+    
+    <script src="~/app/js/services/base/lodash-service.js" type="text/javascript"></script>
+    <script src="~/app/js/services/base/request-context.js" type="text/javascript"></script>
+    <script src="~/app/js/services/base/render-context.js" type="text/javascript"></script>
+    <script src="~/app/js/services/base/user-service.js" type="text/javascript"></script>
+    <script src="~/app/js/services/base/applicationsettings-service.js" type="text/javascript"></script>
+    <script src="~/app/js/services/home/map-service.js" type="text/javascript"></script>
+    <script src="~/app/js/services/home/workorder-service.js" type="text/javascript"></script>
+    <script src="~/app/js/services/admin/notification-service.js" type="text/javascript"></script>
+    
+    <script src="~/app/js/directives/base/cric-multiselect.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-logoff.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-tooltip.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-carusel.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-placeholder.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-daterangepicker.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-popover-error.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-password-validator.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/base/cric-alert.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-designreview.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-map.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-menuiframe.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-panel-right.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-panel-bottom.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-toc.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-panel-content.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-reset-state-on.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-dashboard.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/cric-chart.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-calendar.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-alerts.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-emergency.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-weather.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-map.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-workorder.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-kpm.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-chart.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-scada.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-bas.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-reports.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/home/widgets/cric-widget-criticality.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/admin/cric-message-editor.js" type="text/javascript"></script>
+    <script src="~/app/js/directives/admin/cric-html-content.js" type="text/javascript"></script>
+    
+    <script src="~/app/js/filters/boolean-filter.js" type="text/javascript"></script>
+}
+
+<div class="fill" ng-controller="base.AppCtrl" ng-class="isLoading && 'loading' || 'loaded'" style="background-color: transparent;">
+
+    <div class="home" cric-tooltip>
+
+        <div cric-alert delay="2000" style="position:absolute; top: 5px; right: 5px; z-index: 100000;"></div>
+
+	    <div ng-switch="subview">
+		    <div ng-switch-when="home" ng-include=" 'app/partials/home/index.html' "></div>
+		    <div ng-switch-when="admin" ng-include=" 'app/partials/admin/index.html' "></div>
+	    </div>
+
+    </div>
+
+</div>
+
+@Scripts.Render("~/bundles/scripts")
+
+<script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.4/" type="text/javascript"></script>
+
+<script>
+    require({
+        parseOnLoad: true,
+        packages: [
+            { "name": "agsjs", "location": "@Url.Content("~")" + "app/lib/agsjs" }
+        ]
+    }, ["dojo/ready", "dojo/fx", "esri/map", "esri/toolbars/draw", "esri/dijit/scalebar",
+                "esri/tasks/identify", "esri/tasks/find", "agsjs/dijit/TOC"], function (ready) {
+            ready(function () {
+                esri.config.defaults.io.proxyUrl = "proxy.ashx";
+                esri.config.defaults.io.alwaysUseProxy = true;
+
+                @if (User.IsInRole("Administrator"))
+                {
+                    @:angular.bootstrap($(".fill"), ['CricAdmin']);
+                }
+                else
+                {
+                    @:angular.bootstrap($(".fill"), ['Cric']);
+                }
+            });
+    });
+</script>
+
+@if (HttpContext.Current.IsDebuggingEnabled)
+{
+    @RenderDebugScripts()
+}

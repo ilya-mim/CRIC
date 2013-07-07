@@ -1,0 +1,42 @@
+﻿<div ng-controller="home.map.tools.BookmarksCtrl" ng-switch="isLoading">
+
+    <div cric-panel-content class="loading" ng-switch-when="true">
+
+    </div>
+
+	<div ng-switch-when="false" >
+        
+         <div>
+
+            <div ng-repeat='bookmark in bookmarks' ng-model="bookmark" style="padding-bottom: 3px;">
+                
+                <div ng-switch="bookmark.id > 0">
+
+                    <div ng-switch-when="false">
+                        <button class="btn btn-block" type="button" ng-click="setExtent(bookmark)">{{bookmark.name}}</button>
+                    </div>
+                    
+                    <div ng-switch-when="true">
+                            <div class="btn-group btn-block">
+                                <a class="btn" ng-click="deleteBookmark(bookmark)"><i class="icon-remove"></i></a>
+                                <button class="btn" style="width: 88%;" type="button" ng-click="setExtent(bookmark)">{{bookmark.name}}</button>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr style="margin-top:10px; margin-bottom: 10px;" />
+
+            <div class="controls btn-block" style="padding-left: 15px;">
+                <div class="input-append span12">
+                    <input class="span10" type="text" ng-model="bookmark.name"/>
+                    <a class="btn btn-inverse" ng-click="addBookmark(bookmark.name)"><i class="icon-bookmark icon-white"></i></a>
+                </div>
+            </div>
+
+         </div>
+
+     </div>
+
+</div>

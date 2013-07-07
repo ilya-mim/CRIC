@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88B30540-258D-4EA7-899F-2731A9E4BDDB}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRIC</RootNamespace>
+    <AssemblyName>CRIC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\aspnet-CRIC-20130221165611.mdf%3bInitial Catalog=aspnet-CRIC-20130221165611%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\DefaultConnection-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <PublishDatabases>true</PublishDatabases>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.WebApi">
+      <HintPath>..\packages\Unity.WebAPI.0.10\lib\net40\Unity.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApplicationSettingsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WorkOrdersController.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportViewer.aspx.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportViewer.aspx.designer.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\css\bootstrap\bootstrap-wysihtml5.css" />
+    <Content Include="app\css\wysiwyg\wysiwyg-color.css" />
+    <Content Include="app\js\app.js" />
+    <Content Include="app\js\app.min.js" />
+    <Content Include="app\css\app.css" />
+    <Content Include="app\css\bootstrap\bootstrap-multiselect.css" />
+    <Content Include="app\css\bootstrap\bootstrap.css" />
+    <Content Include="app\css\bootstrap\bootstrap.min.css" />
+    <Content Include="app\css\bootstrap\datepicker.css" />
+    <Content Include="app\css\bootstrap\daterangepicker.css" />
+    <Content Include="app\css\bootstrap\datetimepicker.css" />
+    <Content Include="app\css\bootstrap\prettify.css" />
+    <Content Include="app\css\jquery\jquery.gridster.css" />
+    <Content Include="app\css\jquery\jquery.gridster.min.css" />
+    <Content Include="app\css\jquery\jquery.simplecolorpicker.css" />
+    <Content Include="app\img\glyphicons-halflings-white.png" />
+    <Content Include="app\img\glyphicons-halflings.png" />
+    <Content Include="app\img\glyphicons_216_circle_arrow_left.png" />
+    <Content Include="app\img\glyphicons_217_circle_arrow_right.png" />
+    <Content Include="app\img\icon_info.png" />
+    <Content Include="app\img\icon_info_act.png" />
+    <Content Include="app\img\icon_layers.png" />
+    <Content Include="app\img\icon_layers_act.png" />
+    <Content Include="app\img\icon_settings.png" />
+    <Content Include="app\img\icon_settings_act.png" />
+    <Content Include="app\img\icon_share.png" />
+    <Content Include="app\img\icon_share_act.png" />
+    <Content Include="app\img\loading.gif" />
+    <Content Include="app\img\sort_asc.png" />
+    <Content Include="app\img\sort_both.png" />
+    <Content Include="app\img\sort_desc.png" />
+    <Content Include="app\js\controllers\admin\admin-controller.js" />
+    <Content Include="app\js\controllers\admin\notification\notification-controller.js" />
+    <Content Include="app\js\controllers\admin\smtp\smtp-controller.js" />
+    <Content Include="app\js\controllers\admin\user\user-controller.js" />
+    <Content Include="app\js\controllers\admin\workordersetting\workordersetting-controller.js" />
+    <Content Include="app\js\controllers\base\about-controller.js" />
+    <Content Include="app\js\controllers\base\app-controller.js" />
+    <Content Include="app\js\controllers\base\logoff-controller.js" />
+    <Content Include="app\js\controllers\base\nav-controller.js" />
+    <Content Include="app\js\controllers\base\userprofile-controller.js" />
+    <Content Include="app\js\controllers\home\chart\chart-controller.js" />
+    <Content Include="app\js\controllers\home\cityengine\cityengine-controller.js" />
+    <Content Include="app\js\controllers\home\dashboard\dashboard-controller.js" />
+    <Content Include="app\js\controllers\home\dashboard\grid-controller.js" />
+    <Content Include="app\js\controllers\home\dashboard\manager-controller.js" />
+    <Content Include="app\js\controllers\home\designreview\designreview-controller.js" />
+    <Content Include="app\js\controllers\home\designreview\workorder-controller.js" />
+    <Content Include="app\js\controllers\home\home-controller.js" />
+    <Content Include="app\js\controllers\home\logoff\logoff-controller.js" />
+    <Content Include="app\js\controllers\home\map\info-controller.js" />
+    <Content Include="app\js\controllers\home\map\map-controller.js" />
+    <Content Include="app\js\controllers\home\map\toc-controller.js" />
+    <Content Include="app\js\controllers\home\map\tools-controller.js" />
+    <Content Include="app\js\controllers\home\map\tools\bookmarks-controller.js" />
+    <Content Include="app\js\controllers\home\map\tools\query-controller.js" />
+    <Content Include="app\js\controllers\home\map\tools\query\attributes-controller.js" />
+    <Content Include="app\js\controllers\home\map\tools\query\location-controller.js" />
+    <Content Include="app\js\controllers\home\map\tools\query\results-controller.js" />
+    <Content Include="app\js\controllers\home\report\report-controller.js" />
+    <Content Include="app\js\controllers\home\workorder\workorder-controller.js" />
+    <Content Include="app\js\directives\admin\cric-html-content.js" />
+    <Content Include="app\js\directives\admin\cric-message-editor.js" />
+    <Content Include="app\js\directives\base\cric-alert.js" />
+    <Content Include="app\js\directives\base\cric-carusel.js" />
+    <Content Include="app\js\directives\base\cric-colorpicker-inline.js" />
+    <Content Include="app\js\directives\base\cric-daterangepicker.js" />
+    <Content Include="app\js\directives\base\cric-logoff.js" />
+    <Content Include="app\js\directives\base\cric-multiselect.js" />
+    <Content Include="app\js\directives\base\cric-password-validator.js" />
+    <Content Include="app\js\directives\base\cric-placeholder.js" />
+    <Content Include="app\js\directives\base\cric-popover-error.js" />
+    <Content Include="app\js\directives\base\cric-tooltip.js" />
+    <Content Include="app\js\directives\home\cric-dashboard.js" />
+    <Content Include="app\js\directives\home\cric-designreview.js" />
+    <Content Include="app\js\directives\home\cric-map.js" />
+    <Content Include="app\js\directives\home\cric-menuiframe.js" />
+    <Content Include="app\js\directives\home\cric-panel-bottom.js" />
+    <Content Include="app\js\directives\home\cric-panel-content.js" />
+    <Content Include="app\js\directives\home\cric-panel-right.js" />
+    <Content Include="app\js\directives\home\cric-reset-state-on.js" />
+    <Content Include="app\js\directives\home\cric-toc.js" />
+    <Content Include="app\js\directives\home\cric-chart.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-reports.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-criticality.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-bas.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-scada.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-alerts.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-calendar.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-chart.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-emergency.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-kpm.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-map.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-weather.js" />
+    <Content Include="app\js\directives\home\widgets\cric-widget-workorder.js" />
+    <Content Include="app\js\filters\boolean-filter.js" />
+    <Content Include="app\js\services\base\applicationsettings-service.js" />
+    <Content Include="app\js\services\base\lodash-service.js" />
+    <Content Include="app\js\services\base\render-context.js" />
+    <Content Include="app\js\services\base\request-context.js" />
+    <Content Include="app\js\services\base\user-service.js" />
+    <Content Include="app\js\services\home\map-service.js" />
+    <Content Include="app\js\services\admin\notification-service.js" />
+    <Content Include="app\js\services\home\workorder-service.js" />
+    <Content Include="app\lib\agsjs\dijit\css\TOC.css" />
+    <Content Include="app\lib\agsjs\dijit\images\googlehybrid.png" />
+    <Content Include="app\lib\agsjs\dijit\images\googleroad.png" />
+    <Content Include="app\lib\agsjs\dijit\images\googlesatellite.png" />
+    <Content Include="app\lib\agsjs\dijit\TOC.js" />
+    <Content Include="app\lib\agsjs\layers\GoogleMapsLayer.js" />
+    <Content Include="app\lib\angular\angular-cookies.js" />
+    <Content Include="app\lib\angular\angular-cookies.min.js" />
+    <Content Include="app\lib\angular\angular-loader.js" />
+    <Content Include="app\lib\angular\angular-loader.min.js" />
+    <Content Include="app\lib\angular\angular-resource.js" />
+    <Content Include="app\lib\angular\angular-resource.min.js" />
+    <Content Include="app\lib\angular\angular-sanitize.js" />
+    <Content Include="app\lib\angular\angular-sanitize.min.js" />
+    <Content Include="app\lib\angular\angular.js" />
+    <Content Include="app\lib\angular\angular.min.js" />
+    <Content Include="app\lib\bootstrap\bootstrap-multiselect.js" />
+    <Content Include="app\lib\bootstrap\bootstrap-wysihtml5.js" />
+    <Content Include="app\lib\bootstrap\bootstrap.customize.js" />
+    <Content Include="app\lib\bootstrap\bootstrap.js" />
+    <Content Include="app\lib\bootstrap\bootstrap.min.js" />
+    <Content Include="app\lib\bootstrap\date.js" />
+    <Content Include="app\lib\bootstrap\daterangepicker.js" />
+    <Content Include="app\lib\highcharts\highcharts.js" />
+    <Content Include="app\lib\highcharts\highcharts.src.js" />
+    <Content Include="app\lib\jquery\jquery-1.9.1.js" />
+    <Content Include="app\lib\jquery\jquery-1.9.1.min.js" />
+    <Content Include="app\lib\jquery\jquery.gridster.js" />
+    <Content Include="app\lib\jquery\jquery.gridster.min.js" />
+    <Content Include="app\lib\jquery\jquery.mousewheel.js" />
+    <Content Include="app\lib\jquery\jquery.mousewheel.min.js" />
+    <Content Include="app\lib\jquery\jquery.placeholder.js" />
+    <Content Include="app\lib\jquery\jquery.placeholder.min.js" />
+    <Content Include="app\lib\jquery\jquery.simplecolorpicker.js" />
+    <Content Include="app\lib\jquery\jquery.zweatherfeed.js" />
+    <Content Include="app\lib\jquery\jquery.zweatherfeed.min.js" />
+    <Content Include="app\lib\lodash\lodash.js" />
+    <Content Include="app\lib\lodash\lodash.min.js" />
+    <Content Include="app\lib\modernizr\modernizr-2.6.2-respond-1.1.0.min.js" />
+    <Content Include="app\lib\wysihtml5\prettify.js" />
+    <Content Include="app\lib\wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="app\lib\wysihtml5\wysihtml5-0.3.0.min.js" />
+    <Content Include="app\partials\admin\index.html" />
+    <Content Include="app\partials\admin\notification\index.html" />
+    <Content Include="app\partials\admin\smtp\index.html" />
+    <Content Include="app\partials\admin\user\index.html" />
+    <Content Include="app\partials\admin\workordersetting\index.html" />
+    <Content Include="app\partials\base\about\index.html" />
+    <Content Include="app\partials\base\logoff\index.html" />
+    <Content Include="app\partials\base\userprofile\Copy of index.html" />
+    <Content Include="app\partials\base\userprofile\index.html" />
+    <Content Include="app\partials\home\chart\index.html" />
+    <Content Include="app\partials\home\cityengine\index.html" />
+    <Content Include="app\partials\home\dashboard\dashboard.html" />
+    <Content Include="app\partials\home\dashboard\grid.html" />
+    <Content Include="app\partials\home\dashboard\index.html" />
+    <Content Include="app\partials\home\dashboard\index_origin.html" />
+    <Content Include="app\partials\home\dashboard\manager.html" />
+    <Content Include="app\partials\home\dashboard\widgets\alerts.html" />
+    <Content Include="app\partials\home\dashboard\widgets\calendar.html" />
+    <Content Include="app\partials\home\dashboard\widgets\bas.html" />
+    <Content Include="app\partials\home\dashboard\widgets\criticality.html" />
+    <Content Include="app\partials\home\dashboard\widgets\reports.html" />
+    <Content Include="app\partials\home\dashboard\widgets\scada.html" />
+    <Content Include="app\partials\home\dashboard\widgets\emergency.html" />
+    <Content Include="app\partials\home\dashboard\widgets\kpm.html" />
+    <Content Include="app\partials\home\dashboard\widgets\map.html" />
+    <Content Include="app\partials\home\dashboard\widgets\workorder.html" />
+    <Content Include="app\partials\home\designreview\index.html" />
+    <Content Include="app\partials\home\designreview\workorder.html" />
+    <Content Include="app\partials\home\index.html" />
+    <Content Include="app\partials\home\logoff\index.html" />
+    <Content Include="app\partials\home\map\Copy of info.html" />
+    <Content Include="app\partials\home\map\index.html" />
+    <Content Include="app\partials\home\map\info.html" />
+    <Content Include="app\partials\home\map\toc.html" />
+    <Content Include="app\partials\home\map\tools.html" />
+    <Content Include="app\partials\home\map\tools\bookmarks.html" />
+    <Content Include="app\partials\home\map\tools\query.html" />
+    <Content Include="app\partials\home\map\tools\query\attributes.html" />
+    <Content Include="app\partials\home\map\tools\query\location.html" />
+    <Content Include="app\partials\home\map\tools\query\results.html" />
+    <Content Include="app\partials\home\report\index.html" />
+    <Content Include="app\partials\home\workorder\index.html" />
+    <Content Include="app_offline.htm_" />
+    <Content Include="cityengine\css\images\CE-Web-Viewer_banner_short.png" />
+    <Content Include="cityengine\css\images\cewv_logo.png" />
+    <Content Include="cityengine\css\images\CE_logo_70x54.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner2.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner_200.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner_24.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner_half.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner_orig.png" />
+    <Content Include="cityengine\css\images\CityEngine-Web-Viewer_banner_sm.png" />
+    <Content Include="cityengine\css\images\failed.png" />
+    <Content Include="cityengine\css\images\favicon.ico" />
+    <Content Include="cityengine\css\images\logo-pod.jpg" />
+    <Content Include="cityengine\css\images\logo_powered.png" />
+    <Content Include="cityengine\css\images\progress_bar.gif" />
+    <Content Include="cityengine\css\images\progress_c_anim_blue.gif" />
+    <Content Include="cityengine\css\images\webgl_icon.png" />
+    <Content Include="cityengine\css\images\web_scene_thumbnail.png" />
+    <Content Include="cityengine\css\images\x_symbol_red_128.png" />
+    <Content Include="cityengine\css\styles.css" />
+    <Content Include="cityengine\css\ui\ajax-loader.gif" />
+    <Content Include="cityengine\css\ui\ce_webscene_thumbnail_fb.png" />
+    <Content Include="cityengine\css\ui\embed_map.png" />
+    <Content Include="cityengine\css\ui\frame_act.png" />
+    <Content Include="cityengine\css\ui\icon_bookmark_next.png" />
+    <Content Include="cityengine\css\ui\icon_bookmark_pause.png" />
+    <Content Include="cityengine\css\ui\icon_bookmark_play.png" />
+    <Content Include="cityengine\css\ui\icon_bookmark_prev.png" />
+    <Content Include="cityengine\css\ui\icon_check.png" />
+    <Content Include="cityengine\css\ui\icon_check_act.png" />
+    <Content Include="cityengine\css\ui\icon_embed.png" />
+    <Content Include="cityengine\css\ui\icon_facebook.png" />
+    <Content Include="cityengine\css\ui\icon_info.png" />
+    <Content Include="cityengine\css\ui\icon_info_act.png" />
+    <Content Include="cityengine\css\ui\icon_invisible.png" />
+    <Content Include="cityengine\css\ui\icon_layers.png" />
+    <Content Include="cityengine\css\ui\icon_layers_act.png" />
+    <Content Include="cityengine\css\ui\icon_mail.png" />
+    <Content Include="cityengine\css\ui\icon_nav_bookmark.png" />
+    <Content Include="cityengine\css\ui\icon_nav_bookmark_act.png" />
+    <Content Include="cityengine\css\ui\icon_nav_home.png" />
+    <Content Include="cityengine\css\ui\icon_nav_track.png" />
+    <Content Include="cityengine\css\ui\icon_nav_track_act.png" />
+    <Content Include="cityengine\css\ui\icon_nav_tumble.png" />
+    <Content Include="cityengine\css\ui\icon_nav_tumble_act.png" />
+    <Content Include="cityengine\css\ui\icon_nav_zoom_in.png" />
+    <Content Include="cityengine\css\ui\icon_nav_zoom_in_act.png" />
+    <Content Include="cityengine\css\ui\icon_nav_zoom_out.png" />
+    <Content Include="cityengine\css\ui\icon_nav_zoom_out_act.png" />
+    <Content Include="cityengine\css\ui\icon_radio.png" />
+    <Content Include="cityengine\css\ui\icon_radio_act.png" />
+    <Content Include="cityengine\css\ui\icon_search.png" />
+    <Content Include="cityengine\css\ui\icon_search_22.png" />
+    <Content Include="cityengine\css\ui\icon_search_act.png" />
+    <Content Include="cityengine\css\ui\icon_settings.png" />
+    <Content Include="cityengine\css\ui\icon_settings_act.png" />
+    <Content Include="cityengine\css\ui\icon_sh.png" />
+    <Content Include="cityengine\css\ui\icon_share.png" />
+    <Content Include="cityengine\css\ui\icon_share_act.png" />
+    <Content Include="cityengine\css\ui\icon_sh_act.png" />
+    <Content Include="cityengine\css\ui\icon_sun settings.png" />
+    <Content Include="cityengine\css\ui\icon_sun settings_act.png" />
+    <Content Include="cityengine\css\ui\icon_twitter.png" />
+    <Content Include="cityengine\css\ui\icon_url.png" />
+    <Content Include="cityengine\css\ui\icon_visible.png" />
+    <Content Include="cityengine\css\ui\icon_visible_act.png" />
+    <Content Include="cityengine\css\ui\rating_empty.gif" />
+    <Content Include="cityengine\css\ui\rating_full.gif" />
+    <Content Include="cityengine\css\ui\save.png" />
+    <Content Include="cityengine\css\ui\share_cap.png" />
+    <Content Include="cityengine\css\ui\slider_handle.png" />
+    <Content Include="cityengine\css\ui\slider_handle_act.png" />
+    <Content Include="cityengine\css\ui\spinner_brightblue.gif" />
+    <Content Include="cityengine\css\ui\spinner_green.gif" />
+    <Content Include="cityengine\css\ui\spinner_white.gif" />
+    <Content Include="cityengine\css\ui\splitscreen_cancel.png" />
+    <Content Include="cityengine\css\ui\splitscreen_cancel_act.png" />
+    <Content Include="cityengine\css\ui\splitview_act.png" />
+    <Content Include="cityengine\css\ui\splitview_deactivate.png" />
+    <Content Include="cityengine\css\ui\sunlight_slider.png" />
+    <Content Include="cityengine\css\ui\update.png" />
+    <Content Include="cityengine\js\dojo\dijit\form\nls\validate.js" />
+    <Content Include="cityengine\js\dojo\dijit\nls\common.js" />
+    <Content Include="cityengine\js\dojo\dijit\nls\loading.js" />
+    <Content Include="cityengine\js\dojo\dojo\cldr\nls\en\gregorian.js" />
+    <Content Include="cityengine\js\dojo\dojo\cldr\nls\gregorian.js" />
+    <Content Include="cityengine\js\dojo\dojo\dojo.js" />
+    <Content Include="cityengine\js\dojo\dojo\nls\dojo_ROOT.js" />
+    <Content Include="cityengine\js\dojo\dojo\__dojo.js" />
+    <Content Include="cityengine\js\esri\nls\jsapi.js" />
+    <Content Include="cityengine\js\WebScene\nls\cewebviewer.js" />
+    <Content Include="cityengine\viewer.html" />
+    <Content Include="App_Data\buildings.json" />
+    <Content Include="App_Data\files_gd.json" />
+    <Content Include="App_Data\priorities.json" />
+    <Content Include="app\img\favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Log\.gitignore" />
+    <Content Include="ReportViewer.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\map_esri.json" />
+    <Content Include="App_Data\workorders.json" />
+    <Content Include="App_Data\files.json" />
+    <Content Include="App_Data\types.json" />
+    <Content Include="App_Data\systems.json" />
+    <Content Include="App_Data\statuses.json" />
+    <Content Include="App_Data\trades.json" />
+    <Content Include="App_Data\map_lasa.json" />
+    <Content Include="App_Data\map.json" />
+    <Content Include="App_Data\areas.json" />
+    <None Include="Properties\PublishProfiles\Deploy.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <None Include="Web.Deploy.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\map_cric.json" />
+    <Content Include="proxy.ashx" />
+    <Content Include="proxy.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRIC.Models\CRIC.Models.csproj">
+      <Project>{bf02298c-2acd-47e6-bf3c-5444c428a7ac}</Project>
+      <Name>CRIC.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRIC.Services\CRIC.Services.csproj">
+      <Project>{0652b1f0-53d2-49b0-94fa-02b8f42bcb1d}</Project>
+      <Name>CRIC.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63049</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/cric</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>@echo off
+
+set java="C:\Program Files\Java\jre7\bin\java.exe"
+set gcc="D:\Projects\google-closure-compiler\compiler.jar"
+
+rem %25java%25 -jar %25gcc%25 --help
+
+set input=
+set output="$(ProjectDir)app\js\app.min.js"
+
+del %25output%25
+
+call :concat "$(ProjectDir)app\js\app.js"
+
+rem pushd $(ProjectDir)app\js
+rem for /r %25%25f in (*.js) do call :concat "%25%25~f"
+rem popd
+
+pushd $(ProjectDir)app\js\controllers
+for /r %25%25f in (*.js) do call :concat "%25%25~f"
+popd
+
+pushd $(ProjectDir)app\js\directives
+for /r %25%25f in (*.js) do call :concat "%25%25~f"
+popd
+
+pushd $(ProjectDir)app\js\filters
+for /r %25%25f in (*.js) do call :concat "%25%25~f"
+popd
+
+pushd $(ProjectDir)app\js\services
+for /r %25%25f in (*.js) do call :concat "%25%25~f"
+popd
+
+echo %25input%25
+
+%25java%25 -jar %25gcc%25 --summary_detail_level 3 %25input%25 --js_output_file %25output%25
+
+goto :eof
+
+:concat
+set input=%25input%25 --js %251
+goto :eof
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

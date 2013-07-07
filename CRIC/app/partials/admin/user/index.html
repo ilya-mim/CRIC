@@ -1,0 +1,165 @@
+﻿<div ng-controller="admin.UserCtrl">
+
+    <div class="panel-content-container">
+            
+        <div ng-switch="isLoading">
+
+            <div cric-panel-content class="loading" ng-switch-when="true">
+
+            </div>
+
+	        <div ng-switch-when="false" class="row-fluid" style="padding: 10px 50px 0">
+                <div class="span12">
+
+                        <div class="span8">
+
+                        <fieldset>
+                        
+                            <legend style="color:white;">Users</legend>
+
+                            <div class="btn-toolbar" style="height: 20px;">
+                                <div class="btn-toolbar-small left" style="margin-bottom: 5px;">
+                                    <div class="btn-group">
+                                        <button class="btn btn-small btn-danger" ng-click="onResetClick()" title="Reset filters" style="margin-right: 0;">
+                                            <i class="icon-refresh icon-white"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="input-small" cric-placeholder placeholder="User Name" ng-model="table.username" />
+                                    <input type="text" class="input-small" cric-placeholder placeholder="Full Name" ng-model="table.fullname" />
+                                    <input type="text" class="input-small" cric-placeholder placeholder="Email" ng-model="table.email" />
+                                    <select cric-multiselect button-text="Select Roles" button-class="btn btn-small" class="multiselect" multiple="multiple"
+                                        ng-model="selectedRoles" ng-options="k as v for (k, v) in roles" title="Roles">
+                                    </select>
+                                    <div class="btn-group" style="margin-left: 0;">
+                                        <button class="btn btn-small btn-inverse" title="Search" ng-click="onSearchClick()">
+                                            <i class="icon-search icon-white"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="btn-toolbar-small right">
+                                
+                                
+                                    <div class="btn-group" style="margin-right: 0;">
+                                        <button class="btn btn-small btn-inverse" title="Create user" ng-click="onCreateUserClick()">
+                                            <i class="icon-user icon-white"></i>
+                                        </button>
+                                    </div>
+                                
+                                
+                                </div>
+                            </div>
+
+                            <div cric-carusel id="usersCarousel" class="carousel slide" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <div ng-class="{ active: ($first) }" class="item" ng-repeat='page in users'>
+                                            <table class="table table-condensed table-bordered table-striped table-hover" style="background-color: white;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 10px;"><input type="checkbox" ng-model="table.isSelectAll" ng-click="onCheckAll()"/></th>
+                                                        <th style="width: 15px; text-align:center;">#</th>
+                                                        <th ng-class="isSortBy('userid')"><a href ng-click="sortBy('userid')">ID</a></th>
+                                                        <th ng-class="isSortBy('username')"><a href ng-click="sortBy('username')">User Name</a></th>
+                                                        <th ng-class="isSortBy('fullname')"><a href ng-click="sortBy('fullname')">Full Name</a></th>
+                                                        <th ng-class="isSortBy('email')"><a href ng-click="sortBy('email')">Email</a></th>
+                                                        <th ng-class="isSortBy('roles')"><a href ng-click="sortBy('roles')">Role</a></th>
+                                                        <th ng-class="isSortBy('disabled')"><a href ng-click="sortBy('disabled')">Disabled</a></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat='row in page' style="cursor: pointer;" ng-class="row.userid == selectedUser.userid && 'info'" ng-click="onSelectUser(row)">
+                                                        <td style="text-align: center;"><input type="checkbox" ng-model="row['_selected']" ng-change="onCheck(row)"/></td>
+                                                        <td style="text-align: center;">{{row["_number"]}}</td>
+                                                        <td>{{row["userid"]}}</td>
+                                                        <td>{{row["username"]}}</td>
+                                                        <td class="breaked">{{row["fullname"]}}</td>
+                                                        <td>{{row["email"]}}</td>
+                                                        <td>{{row["roles"][0]}}</td>
+                                                        <td style="text-align: center;">{{row["disabled"]|boolean}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>        
+                                        </div>
+                                </div>
+                                <a ng-hide="users.length <= 1" class="user carousel-control left" href="#usersCarousel" data-slide="prev" ng-click="onSlide('prev')">&lsaquo;</a>
+                                <a ng-hide="users.length <= 1" class="user carousel-control right" href="#usersCarousel" data-slide="next" ng-click="onSlide('next')">&rsaquo;</a>
+                            </div>
+
+                            <div ng-show="!isDataAvailable" class="table-no-data-available">
+
+		                        No data available
+	
+                            </div>
+                                
+                            <div style="position: relative; top: -15px;">
+                                <div style="float: left;">
+                                    <span class="btn-mini" style="color:white;">Rows per page&nbsp;</span>
+                                    <select class="btn btn-mini" ng-init=" table.size=table.sizes[0] " 
+                                        ng-model="table.size" ng-options="size for size in table.sizes" ng-change="onPageSizeChanged()"></select>
+                                </div>
+                                <div style="float: right;">
+                                    <span class="btn-mini" style="color:white;">Page {{pageIndex}} of {{users.length}}</span>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        </div>
+
+                        <div class="span3" style="padding-top: 46px; padding-left: 20px;">
+                            <form name="userform" novalidate class="css-form dashboard-manager">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>User Name</label>
+                                        <input class="input-xlarge" ng-disabled="selectedUser.userid > 0" ng-model="selectedUser.username" 
+                                            required type="text" placeholder="User Name" 
+                                            cric-popover-error="popover-error-content" 
+                                            data-error-position="left"/> 
+                                        <div class="popover-error-content">
+                                            <span class="popover-error">User Name is required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>Full Name</label>
+                                        <input class="input-xlarge" ng-model="selectedUser.fullname" type="text" placeholder="Full Name"/> 
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <label>Email</label>
+                                        <input name="emails" 
+                                            class="input-xlarge" required ng-model="selectedUser.email" type="email" placeholder="Email"
+                                            cric-popover-error="popover-error-content" 
+                                            data-error-position="left"/> 
+                                        <div class="popover-error-content">
+                                            <span class="popover-error">Email is required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <label>Role</label>
+                                        <select class="span11" ng-model="selectedUser.roles[0]" ng-options="k as v for (k, v) in roles" />
+                                    </div>
+                                    <div class="span2">
+                                        <label>Disabled</label>
+                                        <input type="checkbox" ng-model="selectedUser.disabled" />
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            <button class="btn span4" style="margin-left: 0;" ng-disabled="userform.$invalid" ng-click="onSaveClick()" title="Save user">Save</button>
+                            <button class="btn span4" ng-disabled="!selectedUser.userid" ng-click="onResetPasswordClick()" title="Reset password">Reset</button>
+                            <button class="btn btn-danger span4" ng-disabled="!selectedUser.userid" ng-click="onDeleteClick()" title="Delete user">Delete</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</div>

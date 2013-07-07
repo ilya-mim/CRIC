@@ -1,0 +1,106 @@
+﻿<div ng-controller="base.UserProfileCtrl">
+
+    <div ng-switch="isLoading">
+
+        <div class="loading" ng-switch-when="true">
+
+        </div>
+
+	    <div ng-switch-when="false">
+
+            <div class="row" style="padding: 30px 50px 0">
+                <div class="span4">
+                    <form name="userprofile" novalidate class="css-form dashboard-manager">
+                        <fieldset>
+                            <legend>Account Details</legend>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Login Name</label>
+                                    <span class="span4 uneditable-input">{{user.username}}</span>           
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Role</label>
+                                    <span class="span4 uneditable-input">{{user.roles.join()}}</span>           
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                        <label>Full Name</label>
+                                        <input class="input-xlarge" ng-model="user.fullname" 
+                                            required type="text" placeholder="Full name" 
+                                            cric-popover-error="popover-error-content" 
+                                            data-error-position="right"/> 
+                                        <div class="popover-error-content">
+                                            <span class="popover-error">Full name is required.</span>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Email</label>
+                                    <input class="input-xlarge" ng-model="user.email" required type="email" 
+                                        placeholder="Email" 
+                                        cric-popover-error="popover-error-content" 
+                                        data-error-position="right"/> 
+                                        <div class="popover-error-content">
+                                            <span class="popover-error">Email is invalid.</span>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Password</label>
+                                    <input name="pwd" 
+                                        class="input-xlarge" ng-model="user.password"
+                                        required type="password" placeholder="Password" />
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Confirm password</label>
+                                    <input name="pwd2" 
+                                        class="input-xlarge" ng-model="confirmpassword"
+                                        required type="password"  placeholder="Password"
+                                        cric-password-validator="pwd" />
+                                    <div ng-style="{display: userprofile.pwd2.$invalid && 'block' || 'none' }" 
+                                        class="popover right" style="position:absolute;top:435px;left:335px;">
+                                        <div class="arrow"></div>
+                                        <div class="popover-content">
+                                            <span class="popover-error">Password is invalid\mismatched.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="span1"></div>
+                <div class="span4" ng-show="user.roles.indexOf('Administrator') == -1">
+                    <form class="form dashboard-manager">
+                        <fieldset>
+                            <legend>Work Orders Settings</legend>
+                                <div ng-repeat='(uk, uv) in user.colors'>
+                                    <div class="row-fluid">
+                                        <div class="span12">
+                                            <label>{{uk}}</label>
+                                            <select class="span11" ng-model="user.colors[uk]" ng-style="{backgroundColor: user.colors[uk]}" ng-options="k as v for (k, v) in colors"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 0 50px 0">
+                <div class="span4">
+                    <button class="btn" ng-disabled="userprofile.$invalid" ng-click="onSaveClick()">Save</button>
+                </div>
+            </div>
+
+
+	    </div>
+
+</div>

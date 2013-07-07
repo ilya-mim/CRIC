@@ -1,0 +1,7 @@
+﻿{
+    "EL": "Electrical",
+    "HV": "HV",
+    "RF": "Refrigeration",
+	"PL": "Plumbing",
+	"GN": "General"
+}

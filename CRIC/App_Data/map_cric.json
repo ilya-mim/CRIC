@@ -1,0 +1,136 @@
+﻿{
+    "initialExtent": {
+                "spatialReference": {
+                    "wkid": 2271
+                },
+                "xmax": 1939458.7818902663,
+                "xmin": 1938892.8096680443,
+                "ymax": 232701.15181013197,
+                "ymin": 232422.07194902084
+        },
+    "basemap": "http://10.10.25.43:81/ArcGIS/rest/services/PSU/Campus_Basemap/MapServer",
+    "layers": [
+                {
+                    "url": "http://10.10.25.43:81/ArcGIS/rest/services/PSU/Campus_Utilities_Dev/MapServer",
+                    "id": "utilities",
+                    "opacity": 1,
+                    "title": "Campus Utilities",
+                    "layerInfos":
+                    [
+                        {
+                            "id": 1,
+                            "fields": ["ANGLE", "CAPTURE", "ID", "LAYER", "NOTES"]
+                        },
+                        {
+                            "id": 21,
+                            "fields": ["WONUM", "DESCRIPTION", "Area", "Building", "System", "Priority", "Type", "CCS Alarm", "Maximo WO#"],
+                            "resource": "api/workorders",
+                            "keyname": "WONUM"
+                        },
+                        {
+                            "id": 23,
+                            "fields": ["BLDG_NAME", "BLDG_NUM"]
+                        }                
+                    ] 
+                }
+    ],
+    "options": {
+        "slider": true,
+        "scale": 1000,
+        "sliderStyle": "large",
+        "logo": false
+    },
+    "bookmarks": [
+        {
+            "extent": {
+                "spatialReference": {
+                    "wkid": 2271
+                },
+                "xmax": 1938725.2112130232,
+                "xmin": 1937027.2945463567,
+                "ymax": 232143.89859902617,
+                "ymin": 231306.65901569286
+            },
+            "name": "Initial view",
+            "id": 0
+        },
+        {
+            "extent": {
+                "spatialReference": {
+                    "wkid": 2271
+                },
+                "xmin": 1938520.7841296904,
+                "ymin": 232693.160751804,
+                "xmax": 1939652.7285741349,
+                "ymax": 233251.32047402626
+            },
+            "name": "Tennis Court Building",
+            "id": 0
+        },
+        {
+            "extent": {
+                "spatialReference": {
+                    "wkid": 2271
+                },
+                "xmin": 1937366.2702408014,
+                "ymin": 231165.38297402623,
+                "xmax": 1937932.2424630234,
+                "ymax": 231444.46283513735
+            },
+            "name": "Eisenhower Auditorium (Milton S)",
+            "id": 0
+        },
+        {
+            "extent": {
+                "spatialReference": {
+                    "wkid": 2271
+                },
+                "xmax": 1939458.7818902663,
+                "xmin": 1938892.8096680443,
+                "ymax": 232701.15181013197,
+                "ymin": 232422.07194902084
+            },
+            "name": "East Area Locker Room",
+            "id": 0
+        },
+    {
+        "extent": {
+            "spatialReference": {
+                "wkid": 2271
+            },
+            "xmax": 1938571.9994074674,
+            "xmin": 1938006.0271852454,
+            "ymax": 230410.6086684707,
+            "ymin": 230131.52880735957        
+        },
+        "name": "White Building (Mary Beaver)",
+        "id": 0
+    },
+    {
+        "extent": {
+            "spatialReference": {
+                "wkid": 2271
+            },
+            "xmax": 1940656.200796356,
+            "xmin": 1940090.228574134,
+            "ymax": 231789.2979045818,
+            "ymin": 231510.21804347067
+        },
+        "name": "Garden House (Amy)",
+        "id": 0
+    },
+    {
+        "extent": {
+            "spatialReference": {
+                "wkid": 2271
+            },
+            "xmax": 1938929.671304596,
+            "xmin": 1937231.7546379294,
+            "ymax": 231912.018055136,
+            "ymin": 231074.77847180268
+        },
+        "name": "Millennium Science Complex",
+        "id": 0
+    }
+    ]
+}

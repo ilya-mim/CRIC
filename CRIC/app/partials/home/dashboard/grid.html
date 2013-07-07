@@ -1,0 +1,25 @@
+﻿<div ng-controller="home.dashboard.GridCtrl">
+
+    <div ng-switch="isLoading">
+
+        <div class="loading" ng-switch-when="true">
+
+        </div>
+
+	    <div ng-switch-when="false">
+
+            <div class="dahsboard-toolbar">
+
+                <a href="#!/home/dashboard/manager" title="Manage dashboard"><i class="icon-th-large icon-white"></i></a>
+            
+            </div>
+            
+            <div cric-dashboard widgets="widgets">
+
+            </div>
+        
+        </div>
+	
+    </div>
+
+</div>

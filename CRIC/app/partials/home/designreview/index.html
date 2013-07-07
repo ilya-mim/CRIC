@@ -1,0 +1,34 @@
+﻿<div ng-controller="home.designreview.DesignReviewCtrl">
+
+    <div cric-menu-iframe id="iframe-menu" ></div>
+
+    <iframe id="panel_right_iframe" src="javascript:false;" frameBorder="0" scrolling="no" allowtransparency="true"></iframe>
+
+    <div cric-panel-right iframe="panel_right_iframe" style="width: 800px; height: 100%; background-color: #ffffff;">
+
+        <ul class="nav nav-tabs" style="margin-bottom: 0;">
+            
+            <li ng-class="{ active: (subview == 'workorder') }"><a href="#!/home/designreview/workorder" data-toggle="tab" class="designreview-workorder-tab" title="Work Orders"></a></li>
+
+        </ul>
+        
+        <div ng-switch="subview" class="panel-content-container">
+
+			<div ng-switch-when="workorder" ng-include=" 'app/partials/home/designreview/workorder.html' "></div>
+		
+        </div>
+    
+    </div>
+
+    <div class="designreview">
+
+        <!--[if IE]>
+            <object cric-design-review assetnumfield="Id" classid="clsid:A662DA7E-CCB7-4743-B71A-D817F6D575DF"></object>
+        <![endif]-->
+        <![if !IE]>
+            <object cric-design-review assetnumfield="Id" type="application/x-Autodesk-DWF"></object>
+        <![endif]>
+
+    </div>
+
+</div>

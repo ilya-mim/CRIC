@@ -1,0 +1,38 @@
+﻿{
+    "initialExtent": {
+            "spatialReference": {
+                "wkid": 4326
+            },
+            "xmin": -76.52428797454706,
+            "ymin": 39.94063407790638,
+            "xmax": -76.07659510345331,
+            "ymax": 40.1613906086681
+    },
+    "basemap": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+    "layers": [
+                {
+                    "url": "http://10.10.25.43:81/ArcGIS/rest/services/LASA/LancasterMap/MapServer",
+                    "id": "lancaster",
+                    "opacity": 1,
+                    "title": "Lancaster",
+                    "layerInfos":
+                    [
+                        {
+                            "id": 8,
+                            "fields": ["GBAID", "STATUS", "MATERIAL", "condition_rating", "bre_rating", "prob_failure_rating", "cons_failure_rating"]
+                        },
+                        {
+                            "id": 5,
+                            "fields": ["PS_NAME", "Station", "GBAID", "condition_rating", "bre_rating", "prob_failure_rating", "cons_failure_rating "]
+                        }
+                    ] 
+                }
+    ],
+    "options": {
+        "slider": true,
+        "sliderStyle": "large",
+        "logo": false
+    },
+    "bookmarks": [
+    ]
+}

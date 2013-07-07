@@ -1,0 +1,42 @@
+﻿<div ng-controller="home.MapCtrl">
+
+    <div cric-panel-right show="true" style="width: 350px; height: 100%; background-color: #ffffff;">
+
+        <ul class="nav nav-tabs" style="margin-bottom: 0;">
+            
+            <li ng-class="{ active: (subview == 'info') }"><a href="#!/home/map/info" data-toggle="tab" class="map-info-tab" title="Information"></a></li>
+            <li ng-class="{ active: (subview == 'tools') }"><a href="#!/home/map/tools" data-toggle="tab" class="map-tools-tab" title="Tools"></a></li>
+            <li ng-class="{ active: (subview == 'toc') }"><a href="#!/home/map/toc" data-toggle="tab" class="map-toc-tab" title="Layers"></a></li>
+
+        </ul>
+
+        <div ng-switch="subview" class="panel-content-container">
+            
+            <div ng-switch-when="toc" ng-include=" 'app/partials/home/map/toc.html' "></div>
+            <div ng-switch-when="info" ng-include=" 'app/partials/home/map/info.html' "></div>
+            <div ng-switch-when="tools" ng-include=" 'app/partials/home/map/tools.html' "></div>
+        
+        </div>
+
+   </div>
+
+    <div ng-include=" 'app/partials/home/map/tools/query/results.html' "></div>
+
+    <div ng-switch="isLoading">
+
+	    <div ng-switch-when="true" class="map-loading">
+
+        </div>
+
+	    <div ng-switch-when="false">
+        
+            <div cric-map class="claro cric-map">
+
+                <img id="mapLoading" src="app/img/loading.gif" style="position:absolute; z-index:100; display:none;" />
+        
+            </div>
+    
+        </div>
+
+    </div>
+</div>

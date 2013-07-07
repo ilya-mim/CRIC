@@ -1,0 +1,11 @@
+﻿<div ng-controller="home.ChartCtrl">
+
+    <div class="charts-sidebar">
+        <select style="width: 100%;" ng-model="selectedStatistic"
+            ng-options="k as v for (k, v) in statistics" title="Charts"></select>
+    </div>
+    <div class="chart-content">
+        <div cric-chart widgetid="selectedStatistic"></div>
+    </div>
+
+</div>

@@ -1,0 +1,56 @@
+﻿@helper RenderBase()
+{
+    var url = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Host, Request.ApplicationPath);
+    if (!url.EndsWith("/"))
+    {
+        url += "/";
+    }
+    <base href="@url" />
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=0">
+        <title>CRIC</title>
+        
+        @RenderBase()
+
+        <link rel="shortcut icon" type="image/x-icon" href="app/img/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/claro/claro.css" />
+        <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/css/esri.css" />
+
+         <style>
+            [ng-cloak] {
+              display: none;
+            }
+         </style>
+
+        @Styles.Render("~/app/css/css-main")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div style="display:none;visibility:hidden;">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+            }
+        </div>
+
+        @RenderBody()
+            
+    </body>
+    <script>
+        console.log("Page document mode: " + document.documentMode);
+    </script> 
+</html>

@@ -1,0 +1,44 @@
+﻿[
+    {
+        "mapid": "utilities",
+        "layerid": "23",
+        "fieldname": "BLDG_NUM",
+        "features":
+        [
+            {
+                "id": "0836000",
+                "files": [
+                    "http://dev.paab.geodecisions.com/webscenes/08001A PSU Henderson Phase 2_2012_Central.dwf",
+                    "Esri_Campus.3ws",
+                    "Unsupported_File.4ws",
+                    "http://dev.paab.geodecisions.com/webscenes/08001A PSU Henderson Phase 2_2012_Central.dwf",
+                    "Esri_Campus.3ws",
+                    "Unsupported_File.4ws",
+                    "http://dev.paab.geodecisions.com/webscenes/08001A PSU Henderson Phase 2_2012_Central.dwf",
+                    "Esri_Campus.3ws",
+                    "Unsupported_File.4ws",
+                    "http://dev.paab.geodecisions.com/webscenes/08001A PSU Henderson Phase 2_2012_Central.dwf",
+                    "Esri_Campus.3ws",
+                    "Unsupported_File.4ws",
+                    "http://dev.paab.geodecisions.com/webscenes/08001A PSU Henderson Phase 2_2012_Central.dwf",
+                    "Esri_Campus.3ws",
+                    "Unsupported_File.4ws",
+                    "http://dev.paab.geodecisions.com/webscenes/08001A PSU Henderson Phase 2_2012_Central.dwf",
+                    "Esri_Campus.3ws",
+                    "Unsupported_File.4ws"
+                ]
+            },
+            {
+                "id": "0038001",
+                "files": [
+                    "http://dev.paab.geodecisions.com/webscenes/MSC_ARCH_InteriorsMEPOnly.dwf",
+                    "http://dev.paab.geodecisions.com/webscenes/MSC_ARCH_InteriorsMEPOnly-NoWalls.dwf",
+                    "http://dev.paab.geodecisions.com/webscenes/MSC_ARCH_InteriorsMEPOnly-Walls.dwf",
+                    "Esri_Campus.3ws",
+                    "MSCCleanData.3ws",
+                    "MSCbyFloor2.3ws"
+                ]
+            }
+        ]
+    }
+]

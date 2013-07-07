@@ -1,0 +1,37 @@
+﻿<div ng-controller="home.HomeCtrl">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <ul class="nav pull-right" ng-controller="base.NavCtrl">
+                <li ng-class="isActive('userprofile')" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{username}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-class="isActive('userprofile')"><a href="#!/home/userprofile">My Profile</a></li>
+                        <li><a href="#!/logoff">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul cric-tabs class="nav" ng-controller="base.NavCtrl">
+                <li ng-class="isActive('dashboard')"><a href="#!/home/dashboard">Dashboard</a></li>
+                <li ng-class="isActive('map')"><a href="#!/home/map/toc">Map</a></li>
+                <li ng-class="isActive('chart')"><a href="#!/home/chart">Charts</a></li>
+                <li ng-class="isActive('workorder')"><a href="#!/home/workorder">Work Orders</a></li>
+                <li ng-class="isActive('about')"><a href="#!/home/about">About</a></li>            
+            </ul>
+        </div>
+    </div>
+
+    <div ng-switch="subview">
+	    <div ng-switch-when="dashboard" ng-include=" 'app/partials/home/dashboard/index.html' "></div>
+	    <div ng-switch-when="map" ng-include=" 'app/partials/home/map/index.html' "></div>
+	    <div ng-switch-when="designreview" ng-include=" 'app/partials/home/designreview/index.html' "></div>
+	    <div ng-switch-when="cityengine" ng-include=" 'app/partials/home/cityengine/index.html' "></div>
+	    <div ng-switch-when="workorder" ng-include=" 'app/partials/home/workorder/index.html' "></div>
+	    <div ng-switch-when="chart" ng-include=" 'app/partials/home/chart/index.html' "></div>
+	    <div ng-switch-when="userprofile" ng-include=" 'app/partials/base/userprofile/index.html' "></div>
+	    <div ng-switch-when="about" ng-include=" 'app/partials/base/about/index.html' "></div>
+	    <div ng-switch-when="logoff" ng-include=" 'app/partials/base/logoff/index.html' "></div>
+    </div>
+
+
+</div>

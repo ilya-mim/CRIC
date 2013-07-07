@@ -1,0 +1,45 @@
+﻿{
+    "initialExtent": {
+                "spatialReference": {
+                    "wkid": 2271
+                },
+				"xmax": 1942029.8987130232,
+				"xmin": 1936370.1764908012,
+				"ymax": 233285.60866847064,
+				"ymin": 230494.81005735951
+        },
+    "basemap": "http://10.10.25.43:81/ArcGIS/rest/services/PSU/Campus_Basemap/MapServer",
+    "layers": [
+                {
+                    "url": "http://10.10.25.43:81/ArcGIS/rest/services/PSU/Campus_Utilities_Dev/MapServer",
+                    "id": "utilities",
+                    "opacity": 1,
+                    "title": "Campus Utilities",
+                    "layerInfos":
+                    [
+                        {
+                            "id": 1,
+                            "fields": ["ANGLE", "CAPTURE", "ID", "LAYER", "NOTES"]
+                        },
+                        {
+                            "id": 21,
+                            "fields": ["WONUM", "DESCRIPTION", "Area", "Building", "System", "Priority", "Type", "CCS Alarm", "Maximo WO#"],
+                            "resource": "api/workorders",
+                            "keyname": "WONUM"
+                        },
+                        {
+                            "id": 23,
+                            "fields": ["BLDG_NAME", "BLDG_NUM"]
+                        }                
+                    ] 
+                }
+    ],
+    "options": {
+        "slider": true,
+        "scale": 5000,
+        "sliderStyle": "large",
+        "logo": false
+    },
+    "bookmarks": [
+    ]
+}

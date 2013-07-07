@@ -1,0 +1,65 @@
+﻿<div ng-controller="admin.SmtpCtrl">
+
+
+    <div ng-switch="isLoading">
+
+        <div class="loading" ng-switch-when="true">
+
+        </div>
+
+	    <div ng-switch-when="false">
+
+            <div class="row" style="padding: 30px 50px 0">
+                <div class="span4">
+                    <form name="smtpform" novalidate class="css-form dashboard-manager">
+                        <fieldset>
+                            <legend>SMTP Settings</legend>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Host Name</label>
+                                    <input class="input-xlarge" ng-model="smtp.hostname" 
+                                        required type="text" placeholder="Host Name" 
+                                        cric-popover-error="popover-error-content" 
+                                        data-error-position="right"/> 
+                                    <div class="popover-error-content">
+                                        <span class="popover-error">Host Name is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Port #</label>
+                                    <input class="input-xlarge" ng-model="smtp.port" type="text" placeholder="Port #"/> 
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                        <label>User Name</label>
+                                        <input class="input-xlarge" ng-model="smtp.username" type="text" placeholder="User Name"/> 
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>Password</label>
+                                    <input name="pwd" 
+                                        class="input-xlarge" ng-model="smtp.password" type="password" placeholder="Password" />
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <label>SSL</label>
+                                    <input ng-model="smtp.ssl" type="checkbox" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+	    </div>
+
+        <div class="row" style="padding: 0 50px 0">
+            <div class="span4">
+                <button class="btn" ng-disabled="smtpform.$invalid" ng-click="onSaveClick()">Save</button>
+            </div>
+        </div>
+
+</div>

@@ -1,0 +1,87 @@
+﻿<div ng-controller="home.map.tools.query.ResultsCtrl">
+    
+    <form id="export-results-form" method="post" action="api/map/export">
+        <input type="hidden" id="csv" name="csv" value="{{results.csv}}" />
+    </form>
+
+    <div cric-panel-bottom pageHeight="page.size.height">
+
+        <div class="bottom-panel-toolbar-container theme">
+            <div class="btn-toolbar bottom-panel-toolbar">
+                <button class="btn btn-mini btn-inverse" ng-class="!hasQueryResults() && 'disabled'" ng-click="onExportResults()" title="Export">
+                    <i class="icon-download-alt icon-white"></i>
+                </button>
+                <button class="btn btn-mini btn-inverse" ng-class="!hasQueryResults() && 'disabled'" ng-click="onShowAll()" title="Show all">
+                    <i class="icon-fullscreen icon-white"></i>
+                </button>
+                <button class="btn btn-mini btn-danger" ng-class="!hasQueryGraphics() && 'disabled'" ng-click="onClearResults()" title="Clear">
+                    <i class="icon-trash icon-white"></i>
+                </button>
+            </div>
+
+            <div style="float: right; color: #ffffff; padding-top: 5px; padding-right: 15px;">
+                <span class="btn-mini">Rows per page&nbsp;</span>
+                <select class="btn btn-mini" ng-init=" page.size=page.sizes[0] " 
+                    ng-model="page.size" ng-options="size.rows for size in page.sizes" ng-change="onPageSizeChanged()"></select>
+            </div>
+
+            <div ng-show="hasQueryResults()" style="float: right; color: #ffffff; padding-top: 5px;">
+                <span class="btn-mini">Page {{pageIndex}} of {{results.pages.length}}</span>
+            </div>
+
+        </div>
+
+        <div class="panel-content-container" style="margin-top: 30px;">
+            
+            <div ng-switch="isLoading">
+
+                <div cric-panel-content class="loading" ng-switch-when="true">
+
+                </div>
+
+	            <div ng-switch-when="false" ng-switch="hasQueryResults()">
+
+                     <div cric-panel-content ng-switch-when="false" class="panel-no-data-available">
+
+		                No data available
+	
+                    </div>
+
+                     <div ng-switch-when="true" style="padding: 5px;">
+
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div cric-carusel id="resultsCarousel" class="carousel slide" data-interval="false">
+                                      <div class="carousel-inner">
+                                           <div ng-class="{ active: ($first) }" class="item" ng-repeat='page in results.pages'>
+                                                <table class="table table-condensed table-bordered table-striped table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="text-align:center;" ng-repeat="column in results.columns">{{column.alias}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat='row in page' style="cursor: pointer;" ng-class="row == selectedFeature && 'info'" ng-click="highlightFeature(row)">
+                                                            <td ng-repeat='cell in row' style="text-align:center;">{{cell}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>        
+                                           </div>
+                                    </div>
+                                    <a ng-hide="results.pages.length <= 1" class="carousel-control left" href="#resultsCarousel" data-slide="prev" ng-click="onSlide('prev')">&lsaquo;</a>
+                                    <a ng-hide="results.pages.length <= 1" class="carousel-control right" href="#resultsCarousel" data-slide="next" ng-click="onSlide('next')">&rsaquo;</a>
+                                </div>
+                            </div>
+                        </div>
+
+                     </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    
+    </div>
+
+</div>

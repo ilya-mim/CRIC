@@ -1,0 +1,168 @@
+﻿<div ng-controller="home.DashboardCtrl">
+
+    <div class="dashboard-left">
+
+        <img src="app/img/glyphicons_216_circle_arrow_left.png" alt="Left" />
+
+    </div>
+
+    <div class="dashboard-center">
+
+        <div class="gridster-container" id="scroll_container">
+
+            <div class="gridster">
+
+                <ul id="gridster_body">
+
+                    <li data-row="1" data-col="1" data-sizex="3" data-sizey="3">
+                        <div class="handle">Map</div>
+                        <div style=" position:absolute; width: 100%; top:30px; bottom: 0;">
+                            <div ng-include=" 'app/partials/home/dashboard/map.html' "></div>
+                        </div>
+                    </li>
+
+                    <li data-row="1" data-col="4" data-sizex="3" data-sizey="2">
+                        <div class="handle">Project Alerts</div>
+                        <div style="padding: 10px;" ng-include=" 'app/partials/home/dashboard/projectalerts.html' "></div>
+                    </li>
+
+                    <li data-row="1" data-col="7" data-sizex="3" data-sizey="2">
+                        <div class="handle">Calendar</div>
+                        <div style="padding: 10px;" cric-calendar ></div>
+<!--                        <div style="padding: 10px;" ng-include=" 'app/partials/home/dashboard/calendar.html' "></div>-->
+                    </li>
+
+                    <li data-row="1" data-col="10" data-sizex="4" data-sizey="2">
+                        <div class="handle">Phone Calls</div>
+                        <div style="padding: 10px;" ng-include=" 'app/partials/home/dashboard/phonecalls.html' "></div>
+                    </li>
+
+                    <li data-row="3" data-col="4" data-sizex="2" data-sizey="1">
+                        <div class="handle">Weather</div>
+                        <div id="wheather_minsk" class="hero-unit"></div>
+                    </li>
+
+                    <li data-row="3" data-col="6" data-sizex="2" data-sizey="1">
+                        <div class="handle">Weather</div>
+                        <div id="wheather_us" class="hero-unit"></div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-right">
+        
+        <img src="app/img/glyphicons_217_circle_arrow_right.png" alt="Right" />
+
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".gridster ul").gridster({
+                widget_margins: [10, 10],
+                widget_base_dimensions: [140, 140],
+                draggable: {
+                    handle: '.handle'
+                }
+            });
+
+            //var gridster = $(".gridster ul").gridster().data('gridster');
+            //$(".gridster ul li").dblclick(function () {
+            //    if ($(this).hasClass("maximaze")) {
+            //        gridster.resize_widget($(this), parseInt($(this).attr("data-sizex-orig")), parseInt($(this).attr("data-sizey-orig")));
+            //    } else {
+            //        $(this).attr("data-sizex-orig", $(this).attr("data-sizex"));
+            //        $(this).attr("data-sizey-orig", $(this).attr("data-sizey"));
+            //        gridster.resize_widget($(this), 3, 3);
+            //    }
+            //    $(this).toggleClass("maximaze");
+            //});
+
+            $("#scroll_container").mousewheel(function (event, delta) {
+                event.preventDefault();
+                this.scrollLeft -= (delta * 30);
+                display_scroll_arrows($("#scroll_container")[0]);
+            });
+
+            var down = false;
+            $("#scroll_container").mousedown(function (e) {
+                var target = e.target || e.srcElement;
+                if (target.id == "gridster_body") {
+                    e.preventDefault();
+                    down = true;
+                    x = e.pageX;
+                    y = e.pageY;
+                    top = $(this).scrollTop();
+                    left = $(this).scrollLeft();
+                } 
+            });
+
+            function display_scroll_arrows(scroll_container) {
+                var offsetWidth = scroll_container.offsetWidth;
+                var scrollWidth = scroll_container.scrollWidth;
+                var scrollLeft = scroll_container.scrollLeft;
+
+                if (scrollLeft == 0) {
+                    $(".dashboard-right").css("display", "none");
+                    $(".dashboard-left").css("display", "block");
+                } else if (scrollLeft + offsetWidth == scrollWidth) {
+                    $(".dashboard-left").css("display", "none");
+                    $(".dashboard-right").css("display", "block");
+                } else {
+                    $(".dashboard-left").css("display", "block");
+                    $(".dashboard-right").css("display", "block");
+                }
+            }
+
+            $("body").mousemove(function (e) {
+                if (down) {
+                    var newX = e.pageX;
+                    var newY = e.pageY;
+
+                    $("#scroll_container").scrollTop(top - newY + y);
+                    $("#scroll_container").scrollLeft(left - newX + x);
+                    display_scroll_arrows($("#scroll_container")[0]);
+                }
+            });
+
+            $("body").mouseup(function (e) {
+                down = false;
+            });
+
+            var scrolling = false;
+
+            $(".dashboard-left img").mousedown(function () {
+                scrolling = true;
+                startScrolling($("#scroll_container"), "+=10");
+            }).mouseup(function () {
+                scrolling = false;
+            });
+
+            $(".dashboard-right img").mousedown(function () {
+                scrolling = true;
+                startScrolling($("#scroll_container"), "-=10");
+            }).mouseup(function () {
+                scrolling = false;
+            });
+
+            function startScrolling(obj, param) {
+                obj.animate({ "scrollLeft": param }, 10, function () {
+                    if (scrolling) {
+                        startScrolling(obj, param);
+                    } else {
+                        display_scroll_arrows($("#scroll_container")[0]);
+                    }
+                });
+            }
+
+            $('#wheather_minsk').weatherfeed(['834463'], { woeid: true, link: false, unit: 'f' });
+            $('#wheather_us').weatherfeed(['2418046'], { woeid: true, link: false });
+        });
+    </script>
+
+</div>

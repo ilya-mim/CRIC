@@ -1,0 +1,10 @@
+﻿<div ng-controller="home.DashboardCtrl">
+
+    <div ng-switch="subview">
+            
+        <div ng-switch-when="grid" ng-include=" 'app/partials/home/dashboard/grid.html' "></div>
+        <div ng-switch-when="manager" ng-include=" 'app/partials/home/dashboard/manager.html' "></div>
+        
+    </div>
+
+</div>

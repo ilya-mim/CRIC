@@ -1,0 +1,41 @@
+﻿<div ng-controller="admin.AdminCtrl">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <ul class="nav pull-right" ng-controller="base.NavCtrl">
+                <li ng-class="isActive('userprofile')" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{username}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-class="isActive('userprofile')"><a href="#!/admin/userprofile">My Profile</a></li>
+                        <li><a href="#!/logoff">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav" ng-controller="base.NavCtrl">
+                <li ng-class="isActive('user,workordersetting,smtp,notification,about')" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Console <b class="caret"></b></a>
+                    <ul class="dropdown-menu transition-slow">
+                        <li ng-class="isActive('users')"><a href="#!/admin/users">User Management</a></li>
+                        <li ng-class="isActive('workordersettings')"><a href="#!/admin/workordersettings">Work Order Settings</a></li>
+                        <li ng-class="isActive('smtp')"><a href="#!/admin/smtp">SMTP Settings</a></li>
+                        <li ng-class="isActive('notifications')"><a href="#!/admin/notifications">Email Notifications</a></li>
+                        <li ng-class="isActive('about')"><a href="#!/admin/about">About</a></li>            
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+	<div ng-switch="subview">
+		<div ng-switch-when="user" ng-include=" 'app/partials/admin/user/index.html' "></div>
+		<div ng-switch-when="notification" ng-include=" 'app/partials/admin/notification/index.html' "></div>
+		<div ng-switch-when="smtp" ng-include=" 'app/partials/admin/smtp/index.html' "></div>
+		<div ng-switch-when="workordersetting" ng-include=" 'app/partials/admin/workordersetting/index.html' "></div>
+	    <div ng-switch-when="userprofile" ng-include=" 'app/partials/base/userprofile/index.html' "></div>
+	    <div ng-switch-when="about" ng-include=" 'app/partials/base/about/index.html' "></div>
+	    <div ng-switch-when="logoff" ng-include=" 'app/partials/base/logoff/index.html' "></div>
+	</div>
+
+</div>
+
+
